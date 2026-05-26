@@ -1,0 +1,48 @@
+name: Regenerate index.yaml
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "plugins/**"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate index.yaml from plugins/
+        run: |
+          python3 - <<'EOF'
+          import os, yaml
+
+          header = {
+              "apiVersion": "datumctl.datum.net/v1alpha1",
+              "kind": "PluginList",
+              "items": [],
+          }
+
+          for filename in sorted(os.listdir("plugins")):
+              if not filename.endswith(".yaml"):
+                  continue
+              with open(f"plugins/{filename}") as fh:
+                  plugin = yaml.safe_load(fh)
+              header["items"].append(plugin)
+
+          with open("index.yaml", "w") as fh:
+              yaml.dump(header, fh, default_flow_style=False, allow_unicode=True, sort_keys=False)
+
+          print(f"Generated index.yaml with {len(header['items'])} plugin(s)")
+          EOF
+
+      - name: Commit updated index.yaml
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.yaml
+          git diff --cached --quiet || git commit -m "chore: regenerate index.yaml"
+          git push
