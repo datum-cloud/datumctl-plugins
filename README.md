@@ -7,6 +7,7 @@ The official plugin index for [datumctl](https://github.com/datum-cloud/datumctl
 | Name | Description |
 |------|-------------|
 | [compute](plugins/compute.yaml) | Deploy and manage containerized workloads on Datum Cloud |
+| [inventory](plugins/inventory.yaml) | Browse the Datum Cloud physical inventory (providers, regions, sites, clusters, nodes) |
 
 ## Installing a plugin
 
