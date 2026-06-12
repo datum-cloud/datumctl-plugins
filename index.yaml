@@ -46,3 +46,49 @@ items:
           arch: arm64
       uri: https://github.com/datum-cloud/compute/releases/download/v0.8.0-dev.7/datumctl-compute_Windows_arm64.zip
       sha256: d11dbd4cedcdddb6eae5671b5193922327c988f169f77df1fd76a610f0098613
+- apiVersion: datumctl.datum.net/v1alpha1
+  kind: Plugin
+  metadata:
+    name: inventory
+  spec:
+    shortDescription: Browse the Datum Cloud physical inventory (providers, regions,
+      sites, clusters, nodes)
+    homepage: https://github.com/datum-cloud/inventory
+    version: v0.0.1
+    platforms:
+    - selector:
+        matchLabels:
+          os: linux
+          arch: amd64
+      uri: https://github.com/datum-cloud/inventory/releases/download/v0.0.1/datumctl-inventory_Linux_x86_64.tar.gz
+      sha256: 5bb84c2c8aee79befaed72c98ac7e964f5f4d75850f319177bbd94e2c32a2fc5
+    - selector:
+        matchLabels:
+          os: linux
+          arch: arm64
+      uri: https://github.com/datum-cloud/inventory/releases/download/v0.0.1/datumctl-inventory_Linux_arm64.tar.gz
+      sha256: 6f9b5f49cf959caf6f042e6de54dd7655baff4546ebbbc4c0ab16b03a6c25bc6
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: amd64
+      uri: https://github.com/datum-cloud/inventory/releases/download/v0.0.1/datumctl-inventory_Darwin_x86_64.tar.gz
+      sha256: fc1c1dbf61c87511d973ac755fb22a514403139a3c7cbb9ff8dae20fcae3ed32
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: arm64
+      uri: https://github.com/datum-cloud/inventory/releases/download/v0.0.1/datumctl-inventory_Darwin_arm64.tar.gz
+      sha256: 84a439d3e22927047e06c960c960cc5ddc11d526994a196e4f9d75d7f5882521
+    - selector:
+        matchLabels:
+          os: windows
+          arch: amd64
+      uri: https://github.com/datum-cloud/inventory/releases/download/v0.0.1/datumctl-inventory_Windows_x86_64.zip
+      sha256: 13b1e0f0d0d5e579e4631480aa26621adf612be561d6b099b91d2f1c5a4a760d
+    - selector:
+        matchLabels:
+          os: windows
+          arch: arm64
+      uri: https://github.com/datum-cloud/inventory/releases/download/v0.0.1/datumctl-inventory_Windows_arm64.zip
+      sha256: 118a65acc87da5fb3ab9360f565e09de92d5f306dc07672af8c7d6b2f19c6d8b
