@@ -7,6 +7,7 @@ The official plugin index for [datumctl](https://github.com/datum-cloud/datumctl
 | Name | Description |
 |------|-------------|
 | [compute](plugins/compute.yaml) | Deploy and manage containerized workloads on Datum Cloud |
+| [dns](plugins/dns.yaml) | Manage DNS zones and records on Datum Cloud |
 
 ## Installing a plugin
 
