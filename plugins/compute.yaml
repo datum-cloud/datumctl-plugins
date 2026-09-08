@@ -37,9 +37,3 @@ spec:
           arch: amd64
       uri: https://github.com/datum-cloud/compute/releases/download/v0.8.0-dev.7/datumctl-compute_Windows_x86_64.zip
       sha256: 69f79339d8151b38497ee234f9dd8fe0211f3130138beb629acc777e08dbbdeb
-    - selector:
-        matchLabels:
-          os: windows
-          arch: arm64
-      uri: https://github.com/datum-cloud/compute/releases/download/v0.8.0-dev.7/datumctl-compute_Windows_arm64.zip
-      sha256: d11dbd4cedcdddb6eae5671b5193922327c988f169f77df1fd76a610f0098613
