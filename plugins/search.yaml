@@ -1,0 +1,45 @@
+apiVersion: datumctl.datum.net/v1alpha1
+kind: Plugin
+metadata:
+  name: search
+spec:
+  shortDescription: Search for resources across the platform by kind, name, and project scope
+  homepage: https://github.com/milo-os/search
+  version: v0.8.0
+  platforms:
+    - selector:
+        matchLabels:
+          os: linux
+          arch: amd64
+      uri: https://github.com/milo-os/search/releases/download/v0.8.0/milo-search_Linux_x86_64.tar.gz
+      sha256: 3049af90dc6594273c8c6f2d6f711f5bf4306f8eda4858dbe5e3aa5d8f69f587
+    - selector:
+        matchLabels:
+          os: linux
+          arch: arm64
+      uri: https://github.com/milo-os/search/releases/download/v0.8.0/milo-search_Linux_arm64.tar.gz
+      sha256: 421227db0f5c6b10096084c727057e18c593e923a94b0e396fb039e74dff3f75
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: amd64
+      uri: https://github.com/milo-os/search/releases/download/v0.8.0/milo-search_Darwin_x86_64.tar.gz
+      sha256: 25c7237bb1aea979cb1ce1977d44dedb4dfc3bdbe29efffbe9c8fb3ef3a074cc
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: arm64
+      uri: https://github.com/milo-os/search/releases/download/v0.8.0/milo-search_Darwin_arm64.tar.gz
+      sha256: c9699154e69911c976bf3f2ca9af5c25529248fd9a4d1b05350128888f197f05
+    - selector:
+        matchLabels:
+          os: windows
+          arch: amd64
+      uri: https://github.com/milo-os/search/releases/download/v0.8.0/milo-search_Windows_x86_64.zip
+      sha256: aabc4489e83a0c2b90e62f66ec1e7a6eb0c57904e1892bc05876937b3de51b35
+    - selector:
+        matchLabels:
+          os: windows
+          arch: arm64
+      uri: https://github.com/milo-os/search/releases/download/v0.8.0/milo-search_Windows_arm64.zip
+      sha256: 86362ad083e92f7bde8efb93531e4ade69176e2a63ad28f16f7d3c3ee2b38ce8
