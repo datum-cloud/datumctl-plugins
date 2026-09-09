@@ -8,6 +8,7 @@ The official plugin index for [datumctl](https://github.com/datum-cloud/datumctl
 |------|-------------|
 | [compute](plugins/compute.yaml) | Deploy and manage containerized workloads on Datum Cloud |
 | [dns](plugins/dns.yaml) | Manage DNS zones and records on Datum Cloud |
+| [search](plugins/search.yaml) | Search for resources across the platform by kind, name, and project scope |
 
 ## Installing a plugin
 
@@ -42,4 +43,5 @@ spec:
       sha256: <lowercase hex sha256 of the archive>
 ```
 
-The binary inside each archive must be named `datumctl-<name>` (or `datumctl-<name>.exe` on Windows).
+The binary inside each archive must be named `datumctl-<name>` or `milo-<name>` (add `.exe` on Windows).
+datumctl recognizes both prefixes, so a plugin built for the milo-os platform installs from this catalog without a second, datumctl-branded build.
