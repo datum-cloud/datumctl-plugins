@@ -1,0 +1,45 @@
+apiVersion: datumctl.datum.net/v1alpha1
+kind: Plugin
+metadata:
+  name: assistant
+spec:
+  shortDescription: Chat with Patch, the Datum Cloud assistant, and browse your conversation history
+  homepage: https://github.com/milo-os/assistant
+  version: v0.0.2
+  platforms:
+    - selector:
+        matchLabels:
+          os: linux
+          arch: amd64
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.2/milo-assistant_Linux_x86_64.tar.gz
+      sha256: e4c95716094acc62d501a71661846e3a28543634de8324803420f6065e2286af
+    - selector:
+        matchLabels:
+          os: linux
+          arch: arm64
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.2/milo-assistant_Linux_arm64.tar.gz
+      sha256: 9adaf4c1da63937cfeb7e08f13c79de649b4cf835aed0389983c27782fd95e6b
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: amd64
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.2/milo-assistant_Darwin_x86_64.tar.gz
+      sha256: 061eabfd929db8a6546447215a0f0bbcb9f601e25dcb724226bd79a1dc3d81f5
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: arm64
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.2/milo-assistant_Darwin_arm64.tar.gz
+      sha256: 52b1476136924eae0216675ba25c1c38de68dc715d20b2ba934f0bd67762846d
+    - selector:
+        matchLabels:
+          os: windows
+          arch: amd64
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.2/milo-assistant_Windows_x86_64.zip
+      sha256: 8574f11e815f3f9c4227663180af08e8220a1f38314a529cf63c7bb4fa70d41b
+    - selector:
+        matchLabels:
+          os: windows
+          arch: arm64
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.2/milo-assistant_Windows_arm64.zip
+      sha256: 1f4a1dfd5362efaa194c0757592a5cc10b5433ecaae2234e3db4ee5f51026760
