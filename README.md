@@ -6,6 +6,7 @@ The official plugin index for [datumctl](https://github.com/datum-cloud/datumctl
 
 | Name | Description |
 |------|-------------|
+| [assistant](plugins/assistant.yaml) | Chat with Patch, the Datum Cloud assistant, and browse your conversation history |
 | [compute](plugins/compute.yaml) | Deploy and manage containerized workloads on Datum Cloud |
 | [dns](plugins/dns.yaml) | Manage DNS zones and records on Datum Cloud |
 | [search](plugins/search.yaml) | Search for resources across the platform by kind, name, and project scope |
