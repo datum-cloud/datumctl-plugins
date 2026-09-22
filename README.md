@@ -9,12 +9,14 @@ The official plugin index for [datumctl](https://github.com/datum-cloud/datumctl
 | [assistant](plugins/assistant.yaml) | Chat with Patch, the Datum Cloud assistant, and browse your conversation history |
 | [compute](plugins/compute.yaml) | Deploy and manage containerized workloads on Datum Cloud |
 | [dns](plugins/dns.yaml) | Manage DNS zones and records on Datum Cloud |
+| [ipam](plugins/ipam.yaml) | Manage IP address space (pools and prefixes) across the platform |
 | [search](plugins/search.yaml) | Search for resources across the platform by kind, name, and project scope |
 
 ## Installing a plugin
 
 ```sh
 datumctl plugin install compute
+datumctl plugin install ipam
 ```
 
 ## Submitting a plugin
@@ -46,3 +48,10 @@ spec:
 
 The binary inside each archive must be named `datumctl-<name>` or `milo-<name>` (add `.exe` on Windows).
 datumctl recognizes both prefixes, so a plugin built for the milo-os platform installs from this catalog without a second, datumctl-branded build.
+
+To explicitly select the binary to install, set `files` for each platform, as in the [IPAM manifest](plugins/ipam.yaml):
+
+```yaml
+      files:
+        - from: milo-ipam  # milo-ipam.exe on Windows
+```

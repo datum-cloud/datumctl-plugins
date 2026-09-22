@@ -1,0 +1,57 @@
+apiVersion: datumctl.datum.net/v1alpha1
+kind: Plugin
+metadata:
+  name: ipam
+spec:
+  shortDescription: Manage IP address space (pools and prefixes) across the platform
+  homepage: https://github.com/milo-os/ipam
+  version: v0.4.0
+  platforms:
+    - selector:
+        matchLabels:
+          os: linux
+          arch: amd64
+      uri: https://github.com/milo-os/ipam/releases/download/v0.4.0/milo-ipam_Linux_x86_64.tar.gz
+      sha256: 642c9761f2039b70f04b9af759a79b758252a76ee9ea207474d30d7737781d08
+      files:
+        - from: milo-ipam
+    - selector:
+        matchLabels:
+          os: linux
+          arch: arm64
+      uri: https://github.com/milo-os/ipam/releases/download/v0.4.0/milo-ipam_Linux_arm64.tar.gz
+      sha256: 6adafcc9a3b60f3424c697069cbaebc98a3acef0c2d68f3180a5f580d59797dc
+      files:
+        - from: milo-ipam
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: amd64
+      uri: https://github.com/milo-os/ipam/releases/download/v0.4.0/milo-ipam_Darwin_x86_64.tar.gz
+      sha256: a6b7a9b83685443b9c77207367abf9dac4e17207e73f9d581e8d803235a8a85c
+      files:
+        - from: milo-ipam
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: arm64
+      uri: https://github.com/milo-os/ipam/releases/download/v0.4.0/milo-ipam_Darwin_arm64.tar.gz
+      sha256: db61c0e3cd82c1c862bc1ad6bd57be0d2bfe388b6e8bdddbdf85892172a90a0c
+      files:
+        - from: milo-ipam
+    - selector:
+        matchLabels:
+          os: windows
+          arch: amd64
+      uri: https://github.com/milo-os/ipam/releases/download/v0.4.0/milo-ipam_Windows_x86_64.zip
+      sha256: f0e9a81b754c10706ad059b1fecd38e8ca3fbf6c9e1a66993bdbe1ca3c745300
+      files:
+        - from: milo-ipam.exe
+    - selector:
+        matchLabels:
+          os: windows
+          arch: arm64
+      uri: https://github.com/milo-os/ipam/releases/download/v0.4.0/milo-ipam_Windows_arm64.zip
+      sha256: bbdab13ee33e945c1e4b801ef3312c5b11b9e8a53293496db0d903c2238e9412
+      files:
+        - from: milo-ipam.exe
