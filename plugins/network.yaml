@@ -1,0 +1,39 @@
+apiVersion: datumctl.datum.net/v1alpha1
+kind: Plugin
+metadata:
+  name: network
+spec:
+  shortDescription: Manage VPCs and network primitives on Datum Cloud
+  homepage: https://github.com/datum-cloud/network-services-operator
+  version: v0.29.0-dev.1
+  platforms:
+    - selector:
+        matchLabels:
+          os: linux
+          arch: amd64
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.29.0-dev.1/datumctl-network_Linux_x86_64.tar.gz
+      sha256: 56114266241544a5280786efceb1fd3943fd4ac9a2d58b3f136f4634f9dcf059
+    - selector:
+        matchLabels:
+          os: linux
+          arch: arm64
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.29.0-dev.1/datumctl-network_Linux_arm64.tar.gz
+      sha256: 25d95e1a15afd6f34f25c603293168a9524d8bfc072517305d7e3cfbabb1fcd1
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: amd64
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.29.0-dev.1/datumctl-network_Darwin_x86_64.tar.gz
+      sha256: 41946c9208c71ab0fb0c135e8e9b7100acbb7c1d3a07d3bc2f0274a6d51181f1
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: arm64
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.29.0-dev.1/datumctl-network_Darwin_arm64.tar.gz
+      sha256: 7ff5a4ce0ff54512bb1d618ede7701fb7d4dfc51198c1a9729e059ca23d1442c
+    - selector:
+        matchLabels:
+          os: windows
+          arch: amd64
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.29.0-dev.1/datumctl-network_Windows_x86_64.zip
+      sha256: 28fed7c4013cc7c5143af99547a52e75a9d6d667b28d05830082ed1021f51443
