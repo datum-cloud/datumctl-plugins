@@ -1,0 +1,161 @@
+# Notices when a plugin's upstream repo has published a newer release than this
+# catalog offers, and opens the PR to catch up.
+#
+# Each plugin's own repo is supposed to push its release here. When that push
+# breaks the catalog goes quietly stale and people install an old client, which
+# is what happened to the assistant plugin for two releases. This is the
+# backstop: it does not care why the push did not happen.
+name: Scan upstream releases
+
+on:
+  schedule:
+    # Daily, early UTC. Nothing here is urgent enough to run more often.
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Look for newer releases and open a PR for each
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - <<'EOF'
+          import hashlib, json, os, re, subprocess, sys, urllib.request, yaml
+
+          def sh(*args, **kw):
+              return subprocess.run(args, capture_output=True, text=True, **kw)
+
+          def latest_release(repo):
+              """The newest published release, excluding prereleases and drafts."""
+              r = sh("gh", "api", f"repos/{repo}/releases/latest", "--jq", ".tag_name")
+              return r.stdout.strip() if r.returncode == 0 else None
+
+          def checksums(repo, tag):
+              """asset name -> sha256, from the release's checksums.txt if it has one."""
+              r = sh("gh", "release", "download", tag, "--repo", repo,
+                     "--pattern", "checksums.txt", "--dir", "/tmp/sums", "--clobber")
+              if r.returncode != 0:
+                  return {}
+              out = {}
+              with open("/tmp/sums/checksums.txt") as fh:
+                  for line in fh:
+                      digest, _, name = line.strip().partition("  ")
+                      if name:
+                          out[name] = digest
+              return out
+
+          def sha256_of(url):
+              """Fallback for releases that publish no checksums.txt."""
+              with urllib.request.urlopen(url) as resp:
+                  h = hashlib.sha256()
+                  for chunk in iter(lambda: resp.read(1 << 20), b""):
+                      h.update(chunk)
+              return h.hexdigest()
+
+          opened, skipped = [], []
+
+          for filename in sorted(os.listdir("plugins")):
+              if not filename.endswith(".yaml"):
+                  continue
+              path = f"plugins/{filename}"
+              manifest = yaml.safe_load(open(path))
+              name = manifest["metadata"]["name"]
+              current = manifest["spec"]["version"]
+              platforms = manifest["spec"]["platforms"]
+
+              # The repo is whatever the download URIs point at. Anything not
+              # hosted on GitHub releases is left alone.
+              first = platforms[0]["uri"]
+              m = re.match(r"https://github\.com/([^/]+/[^/]+)/releases/download/", first)
+              if not m:
+                  skipped.append(f"{name}: not a GitHub release URI")
+                  continue
+              repo = m.group(1)
+
+              newest = latest_release(repo)
+              if not newest:
+                  skipped.append(f"{name}: {repo} has no published release")
+                  continue
+              if newest == current:
+                  continue
+
+              branch = f"chore/{name}-{newest}"
+              if sh("git", "ls-remote", "--exit-code", "--heads", "origin", branch).returncode == 0:
+                  skipped.append(f"{name}: {branch} already exists")
+                  continue
+
+              sums = checksums(repo, newest)
+              raw = open(path).read()
+              raw = raw.replace(f"version: {current}", f"version: {newest}")
+              raw = raw.replace(f"/releases/download/{current}/", f"/releases/download/{newest}/")
+
+              # Pair each uri with the sha256 line that follows it, so every
+              # platform gets the digest for its own archive.
+              lines, pending, failed = [], None, None
+              for line in raw.split("\n"):
+                  uri = re.match(r"^\s*uri: (\S+)$", line)
+                  if uri:
+                      pending = uri.group(1)
+                  digest = re.match(r"^(\s*)sha256: \w+$", line)
+                  if digest and pending:
+                      asset = pending.rsplit("/", 1)[-1]
+                      value = sums.get(asset)
+                      if not value:
+                          try:
+                              value = sha256_of(pending)
+                          except Exception as exc:
+                              failed = f"{asset}: {exc}"
+                              break
+                      line = f"{digest.group(1)}sha256: {value}"
+                      pending = None
+                  lines.append(line)
+
+              if failed:
+                  skipped.append(f"{name}: could not hash {failed}")
+                  continue
+
+              open(path, "w").write("\n".join(lines))
+
+              sh("git", "checkout", "-b", branch)
+              sh("git", "add", path)
+              sh("git", "-c", "user.name=github-actions[bot]",
+                 "-c", "user.email=41898282+github-actions[bot]@users.noreply.github.com",
+                 "commit", "-m", f"chore: Update the {name} plugin to {newest}")
+              push = sh("git", "push", "-u", "origin", branch)
+              if push.returncode != 0:
+                  skipped.append(f"{name}: push failed: {push.stderr.strip()}")
+                  sh("git", "checkout", "main")
+                  continue
+
+              body = (
+                  f"`{name}` is on {current} here; {repo} has published **{newest}**.\n\n"
+                  "Opened by the daily upstream scan. A plugin's own repo normally "
+                  "pushes its release to this catalog; this runs regardless of "
+                  "whether that happened, so the catalog cannot drift unnoticed.\n\n"
+                  "Checksums come from the release's `checksums.txt` where it has one, "
+                  "and are computed from the archives where it does not. PR validation "
+                  "downloads every URI and verifies them again."
+              )
+              pr = sh("gh", "pr", "create", "--base", "main", "--head", branch,
+                      "--title", f"Update the {name} plugin to {newest}", "--body", body)
+              opened.append(f"{name}: {current} -> {newest}")
+              sh("git", "checkout", "main")
+
+          summary = os.environ.get("GITHUB_STEP_SUMMARY")
+          if summary:
+              with open(summary, "a") as fh:
+                  fh.write("## Upstream release scan\n\n")
+                  fh.write(("\n".join(f"- opened {x}" for x in opened) or "- nothing to update") + "\n")
+                  if skipped:
+                      fh.write("\n### Skipped\n\n" + "\n".join(f"- {x}" for x in skipped) + "\n")
+          print("opened:", opened or "none")
+          print("skipped:", skipped or "none")
+          EOF
