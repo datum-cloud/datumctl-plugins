@@ -5,41 +5,41 @@ metadata:
 spec:
   shortDescription: Chat with Patch, the Datum Cloud assistant, and browse your conversation history
   homepage: https://github.com/milo-os/assistant
-  version: v0.0.3
+  version: v0.0.4
   platforms:
     - selector:
         matchLabels:
           os: linux
           arch: amd64
-      uri: https://github.com/milo-os/assistant/releases/download/v0.0.3/milo-assistant_Linux_x86_64.tar.gz
-      sha256: b8bf4606d9a0d461124c67029312649d5b9b7fb96241b2a878304d5f6610a00e
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.4/milo-assistant_Linux_x86_64.tar.gz
+      sha256: c8e463b12496c1152b89819314e3a4efc53a2b486df520a904a56571c3018f44
     - selector:
         matchLabels:
           os: linux
           arch: arm64
-      uri: https://github.com/milo-os/assistant/releases/download/v0.0.3/milo-assistant_Linux_arm64.tar.gz
-      sha256: e79aa0a5adc31bf989ef631a309fd67269b448a42299a982fa773f420905cace
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.4/milo-assistant_Linux_arm64.tar.gz
+      sha256: 994dc509ab6fa3235ae93ace4989725d536f138197384943b4904cd78a75e136
     - selector:
         matchLabels:
           os: darwin
           arch: amd64
-      uri: https://github.com/milo-os/assistant/releases/download/v0.0.3/milo-assistant_Darwin_x86_64.tar.gz
-      sha256: 531646cfe1da2c28c1440711f8b8486b6650d22976268110ebcf6d92fa0d216a
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.4/milo-assistant_Darwin_x86_64.tar.gz
+      sha256: 6b416b2a42f73ff3edf1bdf96b1a88de881bdd444f00db72bab9a49141721538
     - selector:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/milo-os/assistant/releases/download/v0.0.3/milo-assistant_Darwin_arm64.tar.gz
-      sha256: 5cd3345b99b37d1337b0300d111264c35712b7c171f72adb0e39bbffe72aa85a
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.4/milo-assistant_Darwin_arm64.tar.gz
+      sha256: 0772847726ebd819889d91dfa7e044ddc914d260e5bf650327df4a0c55e5bdd2
     - selector:
         matchLabels:
           os: windows
           arch: amd64
-      uri: https://github.com/milo-os/assistant/releases/download/v0.0.3/milo-assistant_Windows_x86_64.zip
-      sha256: dcb8c5a66b58efdff4a197a7cb332c4a3489a9bae3655fabe0388ba1ac5d4f6a
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.4/milo-assistant_Windows_x86_64.zip
+      sha256: dd32d47e663592a072a4980a1edce8fa5de98469749598aae17fe18367844424
     - selector:
         matchLabels:
           os: windows
           arch: arm64
-      uri: https://github.com/milo-os/assistant/releases/download/v0.0.3/milo-assistant_Windows_arm64.zip
-      sha256: f7f11c6cbc6adb74d0ae1b46f6bcf3659146e6ef30a750af854d706c5c1b893e
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.4/milo-assistant_Windows_arm64.zip
+      sha256: 830a46d043ad9dcbd6f265f39b365ec04679a39acda3e0ed62b5e07ec484dc3e
