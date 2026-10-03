@@ -5,53 +5,53 @@ metadata:
 spec:
   shortDescription: Manage IP address space (pools and prefixes) across the platform
   homepage: https://github.com/milo-os/ipam
-  version: v0.5.0
+  version: v0.5.1
   platforms:
     - selector:
         matchLabels:
           os: linux
           arch: amd64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.0/milo-ipam_Linux_x86_64.tar.gz
-      sha256: 6fceb919e40865174fbf8f04f8db9c34f8bdff62d527aa72622552780002701a
+      uri: https://github.com/milo-os/ipam/releases/download/v0.5.1/milo-ipam_Linux_x86_64.tar.gz
+      sha256: eda40268ee457b474495970dc8ba9d0f70646c67d69dc0c17666b4d8ea847995
       files:
         - from: milo-ipam
     - selector:
         matchLabels:
           os: linux
           arch: arm64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.0/milo-ipam_Linux_arm64.tar.gz
-      sha256: 59a273e3e2da3e4f1ddf5be29f066ad8fb797cfda188a4212b4887fa747e3d88
+      uri: https://github.com/milo-os/ipam/releases/download/v0.5.1/milo-ipam_Linux_arm64.tar.gz
+      sha256: 14c5711a19642af5f41d8f75c6921fb1fb47aa2352a6675ac2fc30c55f5505de
       files:
         - from: milo-ipam
     - selector:
         matchLabels:
           os: darwin
           arch: amd64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.0/milo-ipam_Darwin_x86_64.tar.gz
-      sha256: 768939a2850954d51a32b300c7c26c19b1e2b98ac28e4635331d266efec33731
+      uri: https://github.com/milo-os/ipam/releases/download/v0.5.1/milo-ipam_Darwin_x86_64.tar.gz
+      sha256: 99fdde7b88677170b471772b1c03284d265478020d649f3f7d69d749898ba1c1
       files:
         - from: milo-ipam
     - selector:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.0/milo-ipam_Darwin_arm64.tar.gz
-      sha256: f67e76742bd9f3fe4e0583f3e9623c34cd58cfba02eaf91d433bc790b7730b48
+      uri: https://github.com/milo-os/ipam/releases/download/v0.5.1/milo-ipam_Darwin_arm64.tar.gz
+      sha256: b64ea405816eb985ea9494273f1374d7fed5beb7f57444426065c6ecb2546cca
       files:
         - from: milo-ipam
     - selector:
         matchLabels:
           os: windows
           arch: amd64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.0/milo-ipam_Windows_x86_64.zip
-      sha256: 5020fba5489c8f39baf02bd2cf826dd0db4b0e04d387bd2a7bc544b9e41cde61
+      uri: https://github.com/milo-os/ipam/releases/download/v0.5.1/milo-ipam_Windows_x86_64.zip
+      sha256: 05a5f865453c9e71af694402eedb47c0729c711d038e8e43cd5d49128d697234
       files:
         - from: milo-ipam.exe
     - selector:
         matchLabels:
           os: windows
           arch: arm64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.0/milo-ipam_Windows_arm64.zip
-      sha256: 87d7cca37bfff95e2c29dc18a8fb39082f1cf4fdde555a82aedbd6a5c171b6c8
+      uri: https://github.com/milo-os/ipam/releases/download/v0.5.1/milo-ipam_Windows_arm64.zip
+      sha256: e30cc05f133db251a824a8d66c1798fed73fe349288ef294ac7a5a836e2a328d
       files:
         - from: milo-ipam.exe
