@@ -11,6 +11,7 @@ The official plugin index for [datumctl](https://github.com/datum-cloud/datumctl
 | [compute](plugins/compute.yaml) | Deploy and manage containerized workloads on Datum Cloud |
 | [dns](plugins/dns.yaml) | Manage DNS zones and records on Datum Cloud |
 | [ipam](plugins/ipam.yaml) | Manage IP address space (pools and prefixes) across the platform |
+| [network](plugins/network.yaml) | Create and manage networks and network services on Datum Cloud |
 | [search](plugins/search.yaml) | Search for resources across the platform by kind, name, and project scope |
 | [telemetry](plugins/telemetry.yaml) | Query logs for your Datum Cloud projects |
 
