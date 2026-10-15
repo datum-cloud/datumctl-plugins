@@ -5,35 +5,35 @@ metadata:
 spec:
   shortDescription: Deploy and manage containerized workloads on Datum Cloud
   homepage: https://github.com/datum-cloud/compute
-  version: v0.12.8
+  version: v0.12.10
   platforms:
     - selector:
         matchLabels:
           os: linux
           arch: amd64
-      uri: https://github.com/datum-cloud/compute/releases/download/v0.12.8/datumctl-compute_Linux_x86_64.tar.gz
-      sha256: 3dd52af066447b5d4f74e89a46774459fe174a1681453f8326783865dc2ea4e7
+      uri: https://github.com/datum-cloud/compute/releases/download/v0.12.10/datumctl-compute_Linux_x86_64.tar.gz
+      sha256: dac7ada861cc60b38b3166ec64510c5487b15d86c51036a898ef1c8ac408d23c
     - selector:
         matchLabels:
           os: linux
           arch: arm64
-      uri: https://github.com/datum-cloud/compute/releases/download/v0.12.8/datumctl-compute_Linux_arm64.tar.gz
-      sha256: 6e9e94fac258fe5818e9303be12f35abfe21d2e26b292c83307f0d966b5a9dae
+      uri: https://github.com/datum-cloud/compute/releases/download/v0.12.10/datumctl-compute_Linux_arm64.tar.gz
+      sha256: 9a0c81fe9e2820190b0a9509673ab4fc626c9a63e82dd6864cc25c14b06f9006
     - selector:
         matchLabels:
           os: darwin
           arch: amd64
-      uri: https://github.com/datum-cloud/compute/releases/download/v0.12.8/datumctl-compute_Darwin_x86_64.tar.gz
-      sha256: befc439f537baf623cb406c77ff8695171683ee77dc95d1afc2318673c5c00d0
+      uri: https://github.com/datum-cloud/compute/releases/download/v0.12.10/datumctl-compute_Darwin_x86_64.tar.gz
+      sha256: 5012e9cb17f1c84f89bb5b69a4ac35f381aae97269989c6c8d99611fae73ea61
     - selector:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/datum-cloud/compute/releases/download/v0.12.8/datumctl-compute_Darwin_arm64.tar.gz
-      sha256: ad0e17e25f90f41a935b042a16c9ec0d01d028d04c7647edf30586d8ec388eee
+      uri: https://github.com/datum-cloud/compute/releases/download/v0.12.10/datumctl-compute_Darwin_arm64.tar.gz
+      sha256: 1990484d6485151a8281d6a19f4481ca448e5d89accf491b429863b6b7f9b279
     - selector:
         matchLabels:
           os: windows
           arch: amd64
-      uri: https://github.com/datum-cloud/compute/releases/download/v0.12.8/datumctl-compute_Windows_x86_64.zip
-      sha256: b06388c5778680d78ff965c1ef1d9497a4e0ece3403723fa4a429a1b9072cd76
+      uri: https://github.com/datum-cloud/compute/releases/download/v0.12.10/datumctl-compute_Windows_x86_64.zip
+      sha256: f1ae08288d142ba6d28ba9d33a995edb784430ea001cd5dca844407eaf2a76ca
