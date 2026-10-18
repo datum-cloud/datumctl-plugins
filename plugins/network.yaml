@@ -5,35 +5,35 @@ metadata:
 spec:
   shortDescription: Create and manage networks and network services on Datum Cloud
   homepage: https://github.com/datum-cloud/network-services-operator
-  version: v0.32.26
+  version: v0.32.30
   platforms:
     - selector:
         matchLabels:
           os: linux
           arch: amd64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.26/datumctl-network_Linux_x86_64.tar.gz
-      sha256: 9998a2a9ed70158c27ab6478ca139a425fef7c808f2fa5007ff9e2b5fbf21f10
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.30/datumctl-network_Linux_x86_64.tar.gz
+      sha256: 5c7f2065841a78636b15e4b4edbf7d06089caae15b8997847da12eeeb3422a48
     - selector:
         matchLabels:
           os: linux
           arch: arm64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.26/datumctl-network_Linux_arm64.tar.gz
-      sha256: 33d3dd98d113ce99f84644d7d8f1cd8a2187e93d7e4535fe5a0d0d15718119bd
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.30/datumctl-network_Linux_arm64.tar.gz
+      sha256: b1c2830e4ce62e10de93f7dcb96d98a9b781067041e331d9c716483cd3c123e4
     - selector:
         matchLabels:
           os: darwin
           arch: amd64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.26/datumctl-network_Darwin_x86_64.tar.gz
-      sha256: 7feb0cbfa514e74c0bd16847270b11dad39dbf401d0065e7a2bd1cf02afce2be
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.30/datumctl-network_Darwin_x86_64.tar.gz
+      sha256: 08976b54247cdd701af3de3a05b953569d1f5de2a2af1507c917b7bdc7598051
     - selector:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.26/datumctl-network_Darwin_arm64.tar.gz
-      sha256: 715ba7fdcffa97a587a3f942cb275cf664e13cd204b5ce20289bc6f1e437e7c8
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.30/datumctl-network_Darwin_arm64.tar.gz
+      sha256: 07c6a491188321d64313791d5fc44948dcc9936bbed217d7724fe68891d36289
     - selector:
         matchLabels:
           os: windows
           arch: amd64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.26/datumctl-network_Windows_x86_64.zip
-      sha256: 88afe38c4f09327c8a2a0099bee7234398c5925a39d7a232cb7670bb67ca2323
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.30/datumctl-network_Windows_x86_64.zip
+      sha256: c0ee7e4bcb391cd2538576871fd00c38d4aaac8c0aed0dda668d843c2db89f2e
