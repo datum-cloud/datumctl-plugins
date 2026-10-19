@@ -12,6 +12,7 @@ did not happen.
 
 import argparse
 import hashlib
+import json
 import os
 import re
 import subprocess
@@ -94,13 +95,108 @@ def retarget(text, old, new, sums, on_missing):
 def pr_body(name, repo, current, newest):
     return (
         f"`{name}` is on {current} here; {repo} has published **{newest}**.\n\n"
-        "Opened by the daily upstream scan. A plugin's own repo normally pushes "
+        "Opened or updated by the daily upstream scan. A plugin's own repo normally pushes "
         "its release to this catalog; this runs regardless of whether that "
         "happened, so the catalog cannot drift unnoticed.\n\n"
         "Checksums come from the release's `checksums.txt` where it has one, and "
         "are computed from the archives where it does not. PR validation "
         "downloads every URI and verifies them again."
     )
+
+
+def catalog_repo():
+    """owner/name of this catalog: Actions sets GITHUB_REPOSITORY; by hand, gh knows."""
+    return os.environ.get("GITHUB_REPOSITORY") or run(
+        "gh", "repo", "view", "--json", "nameWithOwner", "--jq", ".nameWithOwner").stdout.strip()
+
+
+def open_pulls(catalog):
+    """Open PRs into main from the catalog's own branches: number, branch, head commit."""
+    jq = (f'.[] | select((.head.repo.full_name // "" | ascii_downcase) == "{catalog.lower()}")'
+          " | {number, branch: .head.ref, sha: .head.sha}")
+    out = run("gh", "api", "--paginate", f"repos/{catalog}/pulls?state=open&base=main&per_page=100", "--jq", jq)
+    if out.returncode != 0:
+        # Guessing "no open PRs" here would open duplicates, the thing this avoids.
+        sys.exit(f"could not list the open PRs: {out.stderr.strip()}")
+    return [json.loads(line) for line in out.stdout.splitlines()]
+
+
+def pr_files(catalog, number):
+    out = run("gh", "api", "--paginate", f"repos/{catalog}/pulls/{number}/files?per_page=100", "--jq", ".[].filename")
+    return out.stdout.split()
+
+
+def candidates(pulls, stable):
+    """PRs on the stable branch first, then on its versioned branches, oldest first."""
+    mine = [pr for pr in pulls if pr["branch"] == stable or pr["branch"].startswith(stable + "-")]
+    return sorted(mine, key=lambda pr: (pr["branch"] != stable, pr["number"]))
+
+
+def plugin_pr(catalog, pulls, name, path):
+    """The open PR that carries this plugin's updates, chosen as the release action chooses it.
+
+    datum-cloud/actions update-plugin-index (v1.22.0, resolve-pr-branch.sh) reuses the PR on
+    update-plugin/<name>, else the oldest on update-plugin/<name>-*, when the plugin's manifest
+    is its only file. Choosing the same PR keeps one open update per plugin, whoever opened it.
+    """
+    for pr in candidates(pulls, f"update-plugin/{name}"):
+        if pr_files(catalog, pr["number"]) == [path]:
+            return pr
+    return None
+
+
+def proposed_version(catalog, pr, path):
+    """The plugin's version at the PR's head."""
+    out = run("gh", "api", "-H", "Accept: application/vnd.github.raw",
+              f"repos/{catalog}/contents/{path}?ref={pr['sha']}")
+    return yaml.safe_load(out.stdout)["spec"]["version"] if out.returncode == 0 else None
+
+
+def stable_taken(pulls, name):
+    return any(pr["branch"] == f"update-plugin/{name}" for pr in pulls)
+
+
+def choose_pr(catalog, pulls, name, path, newest):
+    """The PR to update (None: open one), and why to leave the plugin alone, if so."""
+    pr = plugin_pr(catalog, pulls, name, path)
+    if pr and proposed_version(catalog, pr, path) == newest:
+        return pr, f"#{pr['number']} already proposes {newest}"
+    if not pr and stable_taken(pulls, name):
+        # The release action refuses this case too, rather than overwrite another PR.
+        return None, f"update-plugin/{name} carries a PR that changes more than {path}"
+    return pr, None
+
+
+def plan(pr, why, name):
+    """What the scan does about a plugin that is behind, in a few words."""
+    if why:
+        return why
+    return f"update #{pr['number']}" if pr else f"open a PR on update-plugin/{name}"
+
+
+def publish(path, name, newest, pr, body):
+    """Commit the manifest to the plugin's PR branch, then open or retitle the PR.
+
+    A reused branch is rewritten from main, as the release action rewrites it, so the push is
+    forced. Returns why it failed, or None.
+    """
+    branch = pr["branch"] if pr else f"update-plugin/{name}"
+    title = f"Update the {name} plugin to {newest}"
+    run("git", "checkout", "-B", branch)
+    run("git", "add", path)
+    run("git", "-c", f"user.name={BOT_NAME}", "-c", f"user.email={BOT_EMAIL}",
+        "commit", "-m", f"chore: {title}")
+    push = run("git", "push", "--force", "origin", f"HEAD:refs/heads/{branch}")
+    if push.returncode != 0:
+        run("git", "checkout", "--", path)
+        run("git", "checkout", "main")
+        return f"push failed: {push.stderr.strip()}"
+    if pr:
+        run("gh", "pr", "edit", str(pr["number"]), "--title", title, "--body", body)
+    else:
+        run("gh", "pr", "create", "--base", "main", "--head", branch, "--title", title, "--body", body)
+    run("git", "checkout", "main")
+    return None
 
 
 def main():
@@ -112,6 +208,8 @@ def main():
 
     opened, skipped, behind = [], [], []
     matched = False
+    catalog = catalog_repo()
+    pulls = open_pulls(catalog)
 
     for filename in sorted(os.listdir(PLUGINS_DIR)):
         if not filename.endswith(".yaml"):
@@ -137,13 +235,12 @@ def main():
         if newest == current:
             continue
 
-        behind.append(f"{name}: {current} -> {newest} (from {repo})")
+        pr, why = choose_pr(catalog, pulls, name, path, newest)
+        behind.append(f"{name}: {current} -> {newest} (from {repo}): {plan(pr, why, name)}")
         if args.dry_run:
             continue
-
-        branch = f"chore/{name}-{newest}"
-        if run("git", "ls-remote", "--exit-code", "--heads", "origin", branch).returncode == 0:
-            skipped.append(f"{name}: {branch} already exists")
+        if why:
+            skipped.append(f"{name}: {why}")
             continue
 
         failures = []
@@ -164,22 +261,11 @@ def main():
         with open(path, "w") as handle:
             handle.write(rewritten)
 
-        run("git", "checkout", "-b", branch)
-        run("git", "add", path)
-        run("git", "-c", f"user.name={BOT_NAME}", "-c", f"user.email={BOT_EMAIL}",
-            "commit", "-m", f"chore: Update the {name} plugin to {newest}")
-        push = run("git", "push", "-u", "origin", branch)
-        if push.returncode != 0:
-            skipped.append(f"{name}: push failed: {push.stderr.strip()}")
-            run("git", "checkout", "--", path)
-            run("git", "checkout", "main")
+        failure = publish(path, name, newest, pr, pr_body(name, repo, current, newest))
+        if failure:
+            skipped.append(f"{name}: {failure}")
             continue
-
-        run("gh", "pr", "create", "--base", "main", "--head", branch,
-            "--title", f"Update the {name} plugin to {newest}",
-            "--body", pr_body(name, repo, current, newest))
-        opened.append(f"{name}: {current} -> {newest}")
-        run("git", "checkout", "main")
+        opened.append(f"{name}: {current} -> {newest} ({plan(pr, None, name)})")
 
     # A typo in --plugin must not read as an all-clear.
     if args.plugin and not matched:
@@ -196,7 +282,7 @@ def report(args, opened, skipped, behind):
         lines += [f"- behind: {item}" for item in behind] or ["- everything is up to date"]
         lines += ["", "_Dry run: nothing was changed._"]
     else:
-        lines += [f"- opened {item}" for item in opened] or ["- nothing to update"]
+        lines += [f"- proposed {item}" for item in opened] or ["- nothing to update"]
     if skipped:
         lines += ["", "### Skipped", ""] + [f"- {item}" for item in skipped]
 
