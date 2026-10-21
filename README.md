@@ -14,6 +14,7 @@ The official plugin index for [datumctl](https://github.com/datum-cloud/datumctl
 | [network](plugins/network.yaml) | Create and manage networks and network services on Datum Cloud |
 | [search](plugins/search.yaml) | Search for resources across the platform by kind, name, and project scope |
 | [telemetry](plugins/telemetry.yaml) | Query logs for your Datum Cloud projects |
+| [usage](plugins/usage.yaml) | Show metered usage and spend for your organization or project |
 
 ## Installing a plugin
 

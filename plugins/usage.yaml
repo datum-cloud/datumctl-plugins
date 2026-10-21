@@ -1,0 +1,57 @@
+apiVersion: datumctl.datum.net/v1alpha1
+kind: Plugin
+metadata:
+  name: usage
+spec:
+  shortDescription: Show metered usage and spend for your organization or project
+  homepage: https://github.com/milo-os/billing
+  version: v0.5.0
+  platforms:
+    - selector:
+        matchLabels:
+          os: linux
+          arch: amd64
+      uri: https://github.com/milo-os/billing/releases/download/v0.5.0/milo-usage_Linux_x86_64.tar.gz
+      sha256: 95b4a3bb06c442192493905a2ef35cc8352ae6fbcb06d4cb38acae82e68799f9
+      files:
+        - from: milo-usage
+    - selector:
+        matchLabels:
+          os: linux
+          arch: arm64
+      uri: https://github.com/milo-os/billing/releases/download/v0.5.0/milo-usage_Linux_arm64.tar.gz
+      sha256: 91cad45ca331462a7f6e9153a4a10aa90cdd5d252bab0a69da4450f668a9a278
+      files:
+        - from: milo-usage
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: amd64
+      uri: https://github.com/milo-os/billing/releases/download/v0.5.0/milo-usage_Darwin_x86_64.tar.gz
+      sha256: 4f05122da62e5f0e8e38969f4c8363784e2904494915d0083a201f7b47780a79
+      files:
+        - from: milo-usage
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: arm64
+      uri: https://github.com/milo-os/billing/releases/download/v0.5.0/milo-usage_Darwin_arm64.tar.gz
+      sha256: 78ea832d7d52931f457442e5a45d1e9040641524cf551edfdfda815d35e81697
+      files:
+        - from: milo-usage
+    - selector:
+        matchLabels:
+          os: windows
+          arch: amd64
+      uri: https://github.com/milo-os/billing/releases/download/v0.5.0/milo-usage_Windows_x86_64.zip
+      sha256: cc9376f3ead54efdfb04f34df73758729323ded64a02fb53254ec85cf9bfa6a6
+      files:
+        - from: milo-usage.exe
+    - selector:
+        matchLabels:
+          os: windows
+          arch: arm64
+      uri: https://github.com/milo-os/billing/releases/download/v0.5.0/milo-usage_Windows_arm64.zip
+      sha256: 07b7a61833793d08d6a0756dfd9b5904f424563bbdfbae093b44b59b9ce54402
+      files:
+        - from: milo-usage.exe
