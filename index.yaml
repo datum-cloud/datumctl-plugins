@@ -8,38 +8,38 @@ items:
   spec:
     shortDescription: Create and manage Application Load Balancers on Datum Cloud
     homepage: https://github.com/datum-cloud/network-services-operator
-    version: v0.32.31
+    version: v0.32.36
     platforms:
     - selector:
         matchLabels:
           os: linux
           arch: amd64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.31/datumctl-alb_Linux_x86_64.tar.gz
-      sha256: f3b8e1a05f5f0d229f3f7dbb083a57689ffaab99ab7bc15435449a824760c62a
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.36/datumctl-alb_Linux_x86_64.tar.gz
+      sha256: 8ca7ddab22c807b5dee9e48c2d3e0f5c2d9eb4403b08fffbeb29e23cfb48d68f
     - selector:
         matchLabels:
           os: linux
           arch: arm64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.31/datumctl-alb_Linux_arm64.tar.gz
-      sha256: 9d6e127fe813247b88b2f6b5b2970573d4c7a7efebd556d9881591e8c3ff8a30
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.36/datumctl-alb_Linux_arm64.tar.gz
+      sha256: a69ed2bd64130f6d49382e43db9ffbcc65fecdf7dba73193571dfdfe17989205
     - selector:
         matchLabels:
           os: darwin
           arch: amd64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.31/datumctl-alb_Darwin_x86_64.tar.gz
-      sha256: 86133d78a6fdcf3236bdf3c3607757c0a2e03fd1af1f07bfd8d2046b8cce261e
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.36/datumctl-alb_Darwin_x86_64.tar.gz
+      sha256: 52cccbdaec57ea7e8d064eb5f09ef63cb800c1d2d6a08cb9a1812a60930c8ed2
     - selector:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.31/datumctl-alb_Darwin_arm64.tar.gz
-      sha256: e5c011faa4ac81e8fdca459288137d7c1a1b5d9532530a496078685a488a93a4
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.36/datumctl-alb_Darwin_arm64.tar.gz
+      sha256: 61407bf45af59d577d087235d94245e65def1fc888ea4a7e999d744bf9f24ed0
     - selector:
         matchLabels:
           os: windows
           arch: amd64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.31/datumctl-alb_Windows_x86_64.zip
-      sha256: 36e126b06539da6f213a1745e87556f9c5c758cc105c04d904ea42955b9ac383
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.36/datumctl-alb_Windows_x86_64.zip
+      sha256: f72b08e1cac1f2f7dc8adeadd674ccb597e91ac91a2ead00413f8f55a97add70
 - apiVersion: datumctl.datum.net/v1alpha1
   kind: Plugin
   metadata:
@@ -89,42 +89,99 @@ items:
 - apiVersion: datumctl.datum.net/v1alpha1
   kind: Plugin
   metadata:
-    name: compute
+    name: billing
   spec:
-    shortDescription: Deploy and manage containerized workloads on Datum Cloud
-    homepage: https://github.com/datum-cloud/compute
-    version: v0.12.11
+    shortDescription: View metered usage and spend for your organization or project
+    homepage: https://github.com/milo-os/billing
+    version: v0.5.1
     platforms:
     - selector:
         matchLabels:
           os: linux
           arch: amd64
-      uri: https://github.com/datum-cloud/compute/releases/download/v0.12.11/datumctl-compute_Linux_x86_64.tar.gz
-      sha256: f8c64f5629ebbf199e0d8647ce430957abe5d45134af6cdf8159fec626d88fc6
+      uri: https://github.com/milo-os/billing/releases/download/v0.5.1/milo-billing_Linux_x86_64.tar.gz
+      sha256: c44456e6bccebb4a46e53e99d86170e9d8aad15b275fb90a65ef1287250af0d5
+      files:
+      - from: milo-billing
     - selector:
         matchLabels:
           os: linux
           arch: arm64
-      uri: https://github.com/datum-cloud/compute/releases/download/v0.12.11/datumctl-compute_Linux_arm64.tar.gz
-      sha256: a9b402e9c1e93c15bf6a5b86af67e5ee7b17324e9a88fcdd81304a08a9f9d26b
+      uri: https://github.com/milo-os/billing/releases/download/v0.5.1/milo-billing_Linux_arm64.tar.gz
+      sha256: 71be7c782e95e1e216e7523539d3f5a3ae2f5ff4c86ae98f51c563d3c90db85f
+      files:
+      - from: milo-billing
     - selector:
         matchLabels:
           os: darwin
           arch: amd64
-      uri: https://github.com/datum-cloud/compute/releases/download/v0.12.11/datumctl-compute_Darwin_x86_64.tar.gz
-      sha256: b681bad6d79f69d7f7e341a5a19c7a18e51094c6440080a2eb2c9ab46921d28e
+      uri: https://github.com/milo-os/billing/releases/download/v0.5.1/milo-billing_Darwin_x86_64.tar.gz
+      sha256: 97db65f06dfdcc326b76236ebcb6e623f6b8569b89f8f93ccc3b67acf7dce3a8
+      files:
+      - from: milo-billing
     - selector:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/datum-cloud/compute/releases/download/v0.12.11/datumctl-compute_Darwin_arm64.tar.gz
-      sha256: c2f332dc2cae3cbf18f91251fbd6abafa1515f57ef8d7735562dd370b1cd9e68
+      uri: https://github.com/milo-os/billing/releases/download/v0.5.1/milo-billing_Darwin_arm64.tar.gz
+      sha256: 796b9c91f93621430cb2a7f0d087d45704bd5a2939c3508c7b16acbc3a72d7eb
+      files:
+      - from: milo-billing
     - selector:
         matchLabels:
           os: windows
           arch: amd64
-      uri: https://github.com/datum-cloud/compute/releases/download/v0.12.11/datumctl-compute_Windows_x86_64.zip
-      sha256: f18c48b3a2cb5a5b0abed51591f5116a12273c7cbf2b3b3fea85f67fb27e59ff
+      uri: https://github.com/milo-os/billing/releases/download/v0.5.1/milo-billing_Windows_x86_64.zip
+      sha256: d3ac14c9a2744b3941779523dd8e0826c03fd80094ad506dddfc610bd180df61
+      files:
+      - from: milo-billing.exe
+    - selector:
+        matchLabels:
+          os: windows
+          arch: arm64
+      uri: https://github.com/milo-os/billing/releases/download/v0.5.1/milo-billing_Windows_arm64.zip
+      sha256: c33c30929cd2f526ccf5c8c10d1bdf671f3fbad38d028d5571ff0205145a935a
+      files:
+      - from: milo-billing.exe
+- apiVersion: datumctl.datum.net/v1alpha1
+  kind: Plugin
+  metadata:
+    name: compute
+  spec:
+    shortDescription: Deploy and manage containerized workloads on Datum Cloud
+    homepage: https://github.com/datum-cloud/compute
+    version: v0.13.1
+    platforms:
+    - selector:
+        matchLabels:
+          os: linux
+          arch: amd64
+      uri: https://github.com/datum-cloud/compute/releases/download/v0.13.1/datumctl-compute_Linux_x86_64.tar.gz
+      sha256: 4a2dc03d9673fdfa792247f66686312b5a160e9c07b7322946e33d3302d9efd5
+    - selector:
+        matchLabels:
+          os: linux
+          arch: arm64
+      uri: https://github.com/datum-cloud/compute/releases/download/v0.13.1/datumctl-compute_Linux_arm64.tar.gz
+      sha256: e80c5d6b9f3a0641db57a6d7c71d9cc640c51bb2c08650961f595f781e5832d2
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: amd64
+      uri: https://github.com/datum-cloud/compute/releases/download/v0.13.1/datumctl-compute_Darwin_x86_64.tar.gz
+      sha256: 9904478c60e52ff3aac302d83f76423f7ea4761d772d6b08aeb0f0a365f93b6a
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: arm64
+      uri: https://github.com/datum-cloud/compute/releases/download/v0.13.1/datumctl-compute_Darwin_arm64.tar.gz
+      sha256: 9fa431f30d7c9bf99ef9ba43c10aa50e34b74b997d04e359fcf722dd457a5d85
+    - selector:
+        matchLabels:
+          os: windows
+          arch: amd64
+      uri: https://github.com/datum-cloud/compute/releases/download/v0.13.1/datumctl-compute_Windows_x86_64.zip
+      sha256: f3d54acc3b6407e1efeb7a9ba3dd47973d0f40c3f8e0266374efaff2df52a98f
 - apiVersion: datumctl.datum.net/v1alpha1
   kind: Plugin
   metadata:
@@ -132,38 +189,38 @@ items:
   spec:
     shortDescription: Manage DNS zones and records on Datum Cloud
     homepage: https://github.com/datum-cloud/dns-operator
-    version: v0.10.5
+    version: v0.10.6
     platforms:
     - selector:
         matchLabels:
           os: linux
           arch: amd64
-      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.10.5/datumctl-dns_Linux_x86_64.tar.gz
-      sha256: 4920b84e4dff9ceb9c7eea7c637bf29c84fc057263ccd27d0b5f7831d335f6f0
+      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.10.6/datumctl-dns_Linux_x86_64.tar.gz
+      sha256: 854ef1fcb8354cb34386e7756f550bb96ae42c548c771f9f2ad504ec85569199
     - selector:
         matchLabels:
           os: linux
           arch: arm64
-      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.10.5/datumctl-dns_Linux_arm64.tar.gz
-      sha256: c545aec97df308dc364bb90effe3a6b1b2cfaafc617108d600bd58d6dfd182b8
+      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.10.6/datumctl-dns_Linux_arm64.tar.gz
+      sha256: 3da6253947f15e358901464bd0697f108b55f74c2d0375e98c527fa172e493c4
     - selector:
         matchLabels:
           os: darwin
           arch: amd64
-      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.10.5/datumctl-dns_Darwin_x86_64.tar.gz
-      sha256: aabc78e52e937e98f2762142f166ffa62a3e24b9bb2b76a5a66f0976c4bf7262
+      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.10.6/datumctl-dns_Darwin_x86_64.tar.gz
+      sha256: a84850198551cd837899401cbf6f2a71416d338abc2a3c23e542df9da80c569b
     - selector:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.10.5/datumctl-dns_Darwin_arm64.tar.gz
-      sha256: b734f32e4b4937947ce8109fec4ace2f98db1b1638391d70550e4cd67e1b522a
+      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.10.6/datumctl-dns_Darwin_arm64.tar.gz
+      sha256: 5ae85440a85bb851a64897c859ed5dd1ec4baecd46959e8dfd87c86c9bd33131
     - selector:
         matchLabels:
           os: windows
           arch: amd64
-      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.10.5/datumctl-dns_Windows_x86_64.zip
-      sha256: e9bc23f9ef50ab4fc5feea82ab2742c0ba03ed22189cba2a91675a646d813978
+      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.10.6/datumctl-dns_Windows_x86_64.zip
+      sha256: 02332824946d6dd9703c45dac7d57258a3c5ba1d58d5dd5bfcd0e113ff7d909f
 - apiVersion: datumctl.datum.net/v1alpha1
   kind: Plugin
   metadata:
@@ -171,54 +228,54 @@ items:
   spec:
     shortDescription: Manage IP address space (pools and prefixes) across the platform
     homepage: https://github.com/milo-os/ipam
-    version: v0.5.1
+    version: v0.5.2
     platforms:
     - selector:
         matchLabels:
           os: linux
           arch: amd64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.1/milo-ipam_Linux_x86_64.tar.gz
-      sha256: eda40268ee457b474495970dc8ba9d0f70646c67d69dc0c17666b4d8ea847995
+      uri: https://github.com/milo-os/ipam/releases/download/v0.5.2/milo-ipam_Linux_x86_64.tar.gz
+      sha256: e3d4c91a35b7b73eb6737aed96114966e6c63597d730595865faab8a1b872a6c
       files:
       - from: milo-ipam
     - selector:
         matchLabels:
           os: linux
           arch: arm64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.1/milo-ipam_Linux_arm64.tar.gz
-      sha256: 14c5711a19642af5f41d8f75c6921fb1fb47aa2352a6675ac2fc30c55f5505de
+      uri: https://github.com/milo-os/ipam/releases/download/v0.5.2/milo-ipam_Linux_arm64.tar.gz
+      sha256: e2cb09ad8316feb2a104de88f1d9171f00c3d57f0d4641074bc87398f45d2415
       files:
       - from: milo-ipam
     - selector:
         matchLabels:
           os: darwin
           arch: amd64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.1/milo-ipam_Darwin_x86_64.tar.gz
-      sha256: 99fdde7b88677170b471772b1c03284d265478020d649f3f7d69d749898ba1c1
+      uri: https://github.com/milo-os/ipam/releases/download/v0.5.2/milo-ipam_Darwin_x86_64.tar.gz
+      sha256: f8559f624a7badb9d860480bece5219026b72e619f528d6c6e85778b72b1d90a
       files:
       - from: milo-ipam
     - selector:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.1/milo-ipam_Darwin_arm64.tar.gz
-      sha256: b64ea405816eb985ea9494273f1374d7fed5beb7f57444426065c6ecb2546cca
+      uri: https://github.com/milo-os/ipam/releases/download/v0.5.2/milo-ipam_Darwin_arm64.tar.gz
+      sha256: 27dcee092eef5c2e36d8185ec5b1f683b91939d6b8f03dfe761208db7dfa63a0
       files:
       - from: milo-ipam
     - selector:
         matchLabels:
           os: windows
           arch: amd64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.1/milo-ipam_Windows_x86_64.zip
-      sha256: 05a5f865453c9e71af694402eedb47c0729c711d038e8e43cd5d49128d697234
+      uri: https://github.com/milo-os/ipam/releases/download/v0.5.2/milo-ipam_Windows_x86_64.zip
+      sha256: 4d3962d1822e1df85b179218e0eebd94aae89cedf73a1d904311f2908490fd8e
       files:
       - from: milo-ipam.exe
     - selector:
         matchLabels:
           os: windows
           arch: arm64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.1/milo-ipam_Windows_arm64.zip
-      sha256: e30cc05f133db251a824a8d66c1798fed73fe349288ef294ac7a5a836e2a328d
+      uri: https://github.com/milo-os/ipam/releases/download/v0.5.2/milo-ipam_Windows_arm64.zip
+      sha256: 17f7e6fca08a75f4d753f6e9160215c24c8cf05f6b4042c90f218fcbb66584f0
       files:
       - from: milo-ipam.exe
 - apiVersion: datumctl.datum.net/v1alpha1
@@ -228,38 +285,38 @@ items:
   spec:
     shortDescription: Create and manage networks and network services on Datum Cloud
     homepage: https://github.com/datum-cloud/network-services-operator
-    version: v0.32.31
+    version: v0.32.36
     platforms:
     - selector:
         matchLabels:
           os: linux
           arch: amd64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.31/datumctl-network_Linux_x86_64.tar.gz
-      sha256: aed39d7e0596156ffdb4cf7e76cf5ae5927652d3d45334ae083a111fcaacbbdc
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.36/datumctl-network_Linux_x86_64.tar.gz
+      sha256: 83dce248fabe1bf492f21fcc37718aa9f5bdd73a1b765d3eac6aa58a7e51fc95
     - selector:
         matchLabels:
           os: linux
           arch: arm64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.31/datumctl-network_Linux_arm64.tar.gz
-      sha256: 504f3dca509e4bd226f0d78c1b87dead05d9dc2440fc65fbb3cea85fd3bad87b
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.36/datumctl-network_Linux_arm64.tar.gz
+      sha256: 248ea82fdfca0cdd65ca591e6cc1cfb5425ddd73de3ba80d0e4b22b3dfe57b00
     - selector:
         matchLabels:
           os: darwin
           arch: amd64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.31/datumctl-network_Darwin_x86_64.tar.gz
-      sha256: 8e3b581a96e2d80e35454c7ed3e714747d4341d37f6ee14215ba22c34b3d4b84
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.36/datumctl-network_Darwin_x86_64.tar.gz
+      sha256: aaef8b0a78da064d91768e760082130470a1a6973d8dfa3d7ed03a9f0200bba4
     - selector:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.31/datumctl-network_Darwin_arm64.tar.gz
-      sha256: fd190ec8992f87605a36efeb764837b1c3209e92a3d398c1276e899b04444c34
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.36/datumctl-network_Darwin_arm64.tar.gz
+      sha256: b9aae5b8cd057e1067daa1ef2662ac6fd0813978cc7f19df2725cac5f9c961d8
     - selector:
         matchLabels:
           os: windows
           arch: amd64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.31/datumctl-network_Windows_x86_64.zip
-      sha256: 6fa2851df7a128bc1788fb3f01f518d4da26a09bcdaa76d86253d1cdcce08cfc
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.36/datumctl-network_Windows_x86_64.zip
+      sha256: 8748efce766b9729af341cd56b8bd1a12e82766edbf9889645b18979cf13478d
 - apiVersion: datumctl.datum.net/v1alpha1
   kind: Plugin
   metadata:
