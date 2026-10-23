@@ -5,35 +5,35 @@ metadata:
 spec:
   shortDescription: Create and manage Application Load Balancers on Datum Cloud
   homepage: https://github.com/datum-cloud/network-services-operator
-  version: v0.32.36
+  version: v0.33.0
   platforms:
     - selector:
         matchLabels:
           os: linux
           arch: amd64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.36/datumctl-alb_Linux_x86_64.tar.gz
-      sha256: 8ca7ddab22c807b5dee9e48c2d3e0f5c2d9eb4403b08fffbeb29e23cfb48d68f
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.33.0/datumctl-alb_Linux_x86_64.tar.gz
+      sha256: e36244cd11004be6246b39e1c6d49429a3da659ef0b635bfa089234152c115d2
     - selector:
         matchLabels:
           os: linux
           arch: arm64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.36/datumctl-alb_Linux_arm64.tar.gz
-      sha256: a69ed2bd64130f6d49382e43db9ffbcc65fecdf7dba73193571dfdfe17989205
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.33.0/datumctl-alb_Linux_arm64.tar.gz
+      sha256: a36c10fe5996ad2ce47549146af44765d518063d5c8ae1c0ddafa9fc8b3c197f
     - selector:
         matchLabels:
           os: darwin
           arch: amd64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.36/datumctl-alb_Darwin_x86_64.tar.gz
-      sha256: 52cccbdaec57ea7e8d064eb5f09ef63cb800c1d2d6a08cb9a1812a60930c8ed2
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.33.0/datumctl-alb_Darwin_x86_64.tar.gz
+      sha256: ee5ee9efca232d4e0c3e60567f74ab869a0a7b5936d161ab89f5dd705f7845f1
     - selector:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.36/datumctl-alb_Darwin_arm64.tar.gz
-      sha256: 61407bf45af59d577d087235d94245e65def1fc888ea4a7e999d744bf9f24ed0
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.33.0/datumctl-alb_Darwin_arm64.tar.gz
+      sha256: 4dff168f92deaf2a33c073e1b5f7368c5d7ece11b6a10e60c714b25dad0c0605
     - selector:
         matchLabels:
           os: windows
           arch: amd64
-      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.32.36/datumctl-alb_Windows_x86_64.zip
-      sha256: f72b08e1cac1f2f7dc8adeadd674ccb597e91ac91a2ead00413f8f55a97add70
+      uri: https://github.com/datum-cloud/network-services-operator/releases/download/v0.33.0/datumctl-alb_Windows_x86_64.zip
+      sha256: b210f56cf0c60011c6a603734e34e104ab42fcbaa1cac2e511bba0e38c5f6a1b
