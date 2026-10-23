@@ -8,6 +8,7 @@ The official plugin index for [datumctl](https://github.com/datum-cloud/datumctl
 |------|-------------|
 | [alb](plugins/alb.yaml) | Create and manage Application Load Balancers on Datum Cloud |
 | [assistant](plugins/assistant.yaml) | Chat with Patch, the Datum Cloud assistant, and browse your conversation history |
+| [billing](plugins/billing.yaml) | View metered usage and spend for your organization or project |
 | [compute](plugins/compute.yaml) | Deploy and manage containerized workloads on Datum Cloud |
 | [dns](plugins/dns.yaml) | Manage DNS zones and records on Datum Cloud |
 | [ipam](plugins/ipam.yaml) | Manage IP address space (pools and prefixes) across the platform |
