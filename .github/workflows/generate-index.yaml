@@ -46,6 +46,7 @@ jobs:
         with:
           commit-message: "chore: regenerate index.yaml"
           branch: chore/regen-index
+          sign-commits: true
           title: "chore: regenerate index.yaml"
           body: |
             The plugin registry index has been automatically regenerated following a change to one or more plugin manifests.
