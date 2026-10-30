@@ -23,8 +23,6 @@ import yaml
 
 PLUGINS_DIR = "plugins"
 RELEASE_URI = re.compile(r"https://github\.com/([^/]+/[^/]+)/releases/download/")
-BOT_NAME = "github-actions[bot]"
-BOT_EMAIL = "41898282+github-actions[bot]@users.noreply.github.com"
 
 
 def run(*args):
@@ -177,25 +175,23 @@ def plan(pr, why, name):
 def publish(path, name, newest, pr, body):
     """Commit the manifest to the plugin's PR branch, then open or retitle the PR.
 
-    A reused branch is rewritten from main, as the release action rewrites it, so the push is
-    forced. Returns why it failed, or None.
+    The commit goes through the API so GitHub signs it. A reused branch is reset to main first,
+    as the release action rewrites it. Returns why it failed, or None.
     """
     branch = pr["branch"] if pr else f"update-plugin/{name}"
     title = f"Update the {name} plugin to {newest}"
-    run("git", "checkout", "-B", branch)
-    run("git", "add", path)
-    run("git", "-c", f"user.name={BOT_NAME}", "-c", f"user.email={BOT_EMAIL}",
-        "commit", "-m", f"chore: {title}")
-    push = run("git", "push", "--force", "origin", f"HEAD:refs/heads/{branch}")
-    if push.returncode != 0:
-        run("git", "checkout", "--", path)
-        run("git", "checkout", "main")
-        return f"push failed: {push.stderr.strip()}"
+    base = run("git", "rev-parse", "main").stdout.strip()
+    env = {k: v for k, v in os.environ.items() if k != "EXPECTED_HEAD"}
+    env.update(BASE_SHA=base, GITHUB_REPOSITORY=catalog_repo())
+    commit = subprocess.run(["scripts/sign-commit", branch, f"chore: {title}", path],
+                            capture_output=True, text=True, env=env)
+    run("git", "checkout", "--", path)
+    if commit.returncode != 0:
+        return f"signed commit failed: {commit.stderr.strip()}"
     if pr:
         run("gh", "pr", "edit", str(pr["number"]), "--title", title, "--body", body)
     else:
         run("gh", "pr", "create", "--base", "main", "--head", branch, "--title", title, "--body", body)
-    run("git", "checkout", "main")
     return None
 
 
