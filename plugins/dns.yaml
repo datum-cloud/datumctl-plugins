@@ -5,35 +5,35 @@ metadata:
 spec:
   shortDescription: Manage DNS zones and records on Datum Cloud
   homepage: https://github.com/datum-cloud/dns-operator
-  version: v0.10.6
+  version: v0.13.0
   platforms:
     - selector:
         matchLabels:
           os: linux
           arch: amd64
-      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.10.6/datumctl-dns_Linux_x86_64.tar.gz
-      sha256: 854ef1fcb8354cb34386e7756f550bb96ae42c548c771f9f2ad504ec85569199
+      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.13.0/datumctl-dns_Linux_x86_64.tar.gz
+      sha256: 0e0341aa8228ef04b5d7d08a9d00c1e971d2e0ff425da44477ac85a9c61e1525
     - selector:
         matchLabels:
           os: linux
           arch: arm64
-      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.10.6/datumctl-dns_Linux_arm64.tar.gz
-      sha256: 3da6253947f15e358901464bd0697f108b55f74c2d0375e98c527fa172e493c4
+      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.13.0/datumctl-dns_Linux_arm64.tar.gz
+      sha256: e25bdedbb53ae728aed57859443e27cf53773c5a84bdb1a5671258211af83cd4
     - selector:
         matchLabels:
           os: darwin
           arch: amd64
-      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.10.6/datumctl-dns_Darwin_x86_64.tar.gz
-      sha256: a84850198551cd837899401cbf6f2a71416d338abc2a3c23e542df9da80c569b
+      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.13.0/datumctl-dns_Darwin_x86_64.tar.gz
+      sha256: 9b2fb5b5867091582d8a16a6a03d908d5905957c829103ada80ace14b8725370
     - selector:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.10.6/datumctl-dns_Darwin_arm64.tar.gz
-      sha256: 5ae85440a85bb851a64897c859ed5dd1ec4baecd46959e8dfd87c86c9bd33131
+      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.13.0/datumctl-dns_Darwin_arm64.tar.gz
+      sha256: 2dc26e573f9c1990e484a4f46c34f06d49f9e366ace3c96a2a67d346584e745f
     - selector:
         matchLabels:
           os: windows
           arch: amd64
-      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.10.6/datumctl-dns_Windows_x86_64.zip
-      sha256: 02332824946d6dd9703c45dac7d57258a3c5ba1d58d5dd5bfcd0e113ff7d909f
+      uri: https://github.com/datum-cloud/dns-operator/releases/download/v0.13.0/datumctl-dns_Windows_x86_64.zip
+      sha256: 11e4c057dfda12eedc87026392152dd00e1e99cd0a57dda6ae29f9c89ed8f661
