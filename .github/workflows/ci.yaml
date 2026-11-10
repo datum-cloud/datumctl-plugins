@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   ci:
-    uses: datum-cloud/actions/.github/workflows/ci-basic.yaml@v1.27.1
+    uses: datum-cloud/actions/.github/workflows/plugin-catalog-validate.yaml@v1.27.1
     with:
-      run: scripts/ci-check
+      # The branch rules require the "ci / Build and test" check.
+      check-name: Build and test

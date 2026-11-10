@@ -1,0 +1,16 @@
+name: Catalog health
+
+on:
+  schedule:
+    - cron: "0 12 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  health:
+    uses: datum-cloud/actions/.github/workflows/plugin-catalog-health.yaml@v1.27.1
+    permissions:
+      contents: read
+      issues: write
