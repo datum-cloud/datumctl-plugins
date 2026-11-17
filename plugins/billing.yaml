@@ -5,53 +5,53 @@ metadata:
 spec:
   shortDescription: View metered usage and spend for your organization or project
   homepage: https://github.com/milo-os/billing
-  version: v0.8.3
+  version: v0.9.0
   platforms:
     - selector:
         matchLabels:
           os: linux
           arch: amd64
-      uri: https://github.com/milo-os/billing/releases/download/v0.8.3/milo-billing_Linux_x86_64.tar.gz
-      sha256: eaf21dc968ec8e27aa939e579311b9871f1dc99f968504f88ff67f3039f23c3c
+      uri: https://github.com/milo-os/billing/releases/download/v0.9.0/milo-billing_Linux_x86_64.tar.gz
+      sha256: 95394524724f647cf5343604361187f06cba401271eb90542d85de658e955318
       files:
         - from: milo-billing
     - selector:
         matchLabels:
           os: linux
           arch: arm64
-      uri: https://github.com/milo-os/billing/releases/download/v0.8.3/milo-billing_Linux_arm64.tar.gz
-      sha256: 4d419693b47046191eb9ebaa2b60a9d891aa8d0837d7343a95bb496319c8f620
+      uri: https://github.com/milo-os/billing/releases/download/v0.9.0/milo-billing_Linux_arm64.tar.gz
+      sha256: 8ba5c2b43dc3d2502f178c7728ccb7e8b26fe6b3906a570d2294edba272846ca
       files:
         - from: milo-billing
     - selector:
         matchLabels:
           os: darwin
           arch: amd64
-      uri: https://github.com/milo-os/billing/releases/download/v0.8.3/milo-billing_Darwin_x86_64.tar.gz
-      sha256: 083e6b37435b7c4c4e24effca61f45276f2dcda5fdea0d786fdf9f5cc171a804
+      uri: https://github.com/milo-os/billing/releases/download/v0.9.0/milo-billing_Darwin_x86_64.tar.gz
+      sha256: 165cb2ef0d35bd0c979ac3c0ba83e226194d70d5fea3ab8f7ce3af7d181a197c
       files:
         - from: milo-billing
     - selector:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/milo-os/billing/releases/download/v0.8.3/milo-billing_Darwin_arm64.tar.gz
-      sha256: 3f62c5baca7cba40c81c2b34bfa0f56939226611074fb64ec8e774efc08cff82
+      uri: https://github.com/milo-os/billing/releases/download/v0.9.0/milo-billing_Darwin_arm64.tar.gz
+      sha256: 5bcb61c2d5af43bc3d9f0bdccf9468e6b477b2d68cfd3ca318f2cadf7a935171
       files:
         - from: milo-billing
     - selector:
         matchLabels:
           os: windows
           arch: amd64
-      uri: https://github.com/milo-os/billing/releases/download/v0.8.3/milo-billing_Windows_x86_64.zip
-      sha256: e0dc21eec224b4f0a53ca72b5f16c4b3a79b9a67d7e9d48302b7358498295d43
+      uri: https://github.com/milo-os/billing/releases/download/v0.9.0/milo-billing_Windows_x86_64.zip
+      sha256: c97325ad237ae8011799ba76ee58448aaef2e6c5ab7890d3afdc90d93ab55138
       files:
         - from: milo-billing.exe
     - selector:
         matchLabels:
           os: windows
           arch: arm64
-      uri: https://github.com/milo-os/billing/releases/download/v0.8.3/milo-billing_Windows_arm64.zip
-      sha256: 7c568d2a302b0e39e978be08a1536438c16f534f4c978893107da37cfdffecc9
+      uri: https://github.com/milo-os/billing/releases/download/v0.9.0/milo-billing_Windows_arm64.zip
+      sha256: 40962cc1ad4952126a3b92afbfff231a47281332adae7362beca4bfdb4a5b265
       files:
         - from: milo-billing.exe
