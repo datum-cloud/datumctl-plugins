@@ -48,6 +48,10 @@ items:
     shortDescription: Chat with Patch, the Datum Cloud assistant, and browse your
       conversation history
     homepage: https://github.com/milo-os/assistant
+    deprecated:
+      message: assistant moved to the Milo plugin catalog.
+      replacement:
+        catalog: milo-os/cli-plugins
     version: v0.0.14
     platforms:
     - selector:
@@ -93,6 +97,10 @@ items:
   spec:
     shortDescription: View metered usage and spend for your organization or project
     homepage: https://github.com/milo-os/billing
+    deprecated:
+      message: billing moved to the Milo plugin catalog.
+      replacement:
+        catalog: milo-os/cli-plugins
     version: v0.9.0
     platforms:
     - selector:
@@ -228,6 +236,10 @@ items:
   spec:
     shortDescription: Manage IP address space (pools and prefixes) across the platform
     homepage: https://github.com/milo-os/ipam
+    deprecated:
+      message: ipam moved to the Milo plugin catalog.
+      replacement:
+        catalog: milo-os/cli-plugins
     version: v0.5.6
     platforms:
     - selector:
@@ -325,6 +337,10 @@ items:
     shortDescription: Search for resources across the platform by kind, name, and
       project scope
     homepage: https://github.com/milo-os/search
+    deprecated:
+      message: search moved to the Milo plugin catalog.
+      replacement:
+        catalog: milo-os/cli-plugins
     version: v0.8.12
     platforms:
     - selector:
@@ -370,6 +386,10 @@ items:
   spec:
     shortDescription: Query logs for your Datum Cloud projects
     homepage: https://github.com/milo-os/telemetry
+    deprecated:
+      message: telemetry moved to the Milo plugin catalog.
+      replacement:
+        catalog: milo-os/cli-plugins
     version: v0.6.10
     platforms:
     - selector:
