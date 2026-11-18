@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   rebuild:
-    uses: datum-cloud/actions/.github/workflows/plugin-catalog-index.yaml@v1.27.1
+    uses: datum-cloud/actions/.github/workflows/plugin-catalog-index.yaml@v1.28.0
     secrets:
       app-id: ${{ secrets.RELEASE_BOT_APP_ID }}
       app-private-key: ${{ secrets.RELEASE_BOT_APP_PRIVATE_KEY }}
