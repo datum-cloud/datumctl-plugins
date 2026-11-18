@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   health:
-    uses: datum-cloud/actions/.github/workflows/plugin-catalog-health.yaml@v1.27.1
+    uses: datum-cloud/actions/.github/workflows/plugin-catalog-health.yaml@v1.28.0
     permissions:
       contents: read
       issues: write
