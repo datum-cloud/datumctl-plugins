@@ -5,6 +5,10 @@ metadata:
 spec:
   shortDescription: Query logs for your Datum Cloud projects
   homepage: https://github.com/milo-os/telemetry
+  deprecated:
+    message: telemetry moved to the Milo plugin catalog.
+    replacement:
+      catalog: milo-os/cli-plugins
   version: v0.6.10
   platforms:
     - selector:

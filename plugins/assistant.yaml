@@ -5,6 +5,10 @@ metadata:
 spec:
   shortDescription: Chat with Patch, the Datum Cloud assistant, and browse your conversation history
   homepage: https://github.com/milo-os/assistant
+  deprecated:
+    message: assistant moved to the Milo plugin catalog.
+    replacement:
+      catalog: milo-os/cli-plugins
   version: v0.0.14
   platforms:
     - selector:

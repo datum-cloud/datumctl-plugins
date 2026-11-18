@@ -7,14 +7,14 @@ The official plugin catalog for [datumctl](https://github.com/datum-cloud/datumc
 | Name | Description |
 |------|-------------|
 | [alb](plugins/alb.yaml) | Create and manage Application Load Balancers on Datum Cloud |
-| [assistant](plugins/assistant.yaml) | Chat with Patch, the Datum Cloud assistant, and browse your conversation history |
-| [billing](plugins/billing.yaml) | View metered usage and spend for your organization or project |
+| [assistant](plugins/assistant.yaml) | **Deprecated:** moved to the [Milo catalog](https://github.com/milo-os/cli-plugins). Chat with Patch, the Datum Cloud assistant, and browse your conversation history |
+| [billing](plugins/billing.yaml) | **Deprecated:** moved to the [Milo catalog](https://github.com/milo-os/cli-plugins). View metered usage and spend for your organization or project |
 | [compute](plugins/compute.yaml) | Deploy and manage containerized workloads on Datum Cloud |
 | [dns](plugins/dns.yaml) | Manage DNS zones and records on Datum Cloud |
-| [ipam](plugins/ipam.yaml) | Manage IP address space (pools and prefixes) across the platform |
+| [ipam](plugins/ipam.yaml) | **Deprecated:** moved to the [Milo catalog](https://github.com/milo-os/cli-plugins). Manage IP address space (pools and prefixes) across the platform |
 | [network](plugins/network.yaml) | Create and manage networks and network services on Datum Cloud |
-| [search](plugins/search.yaml) | Search for resources across the platform by kind, name, and project scope |
-| [telemetry](plugins/telemetry.yaml) | Query logs for your Datum Cloud projects |
+| [search](plugins/search.yaml) | **Deprecated:** moved to the [Milo catalog](https://github.com/milo-os/cli-plugins). Search for resources across the platform by kind, name, and project scope |
+| [telemetry](plugins/telemetry.yaml) | **Deprecated:** moved to the [Milo catalog](https://github.com/milo-os/cli-plugins). Query logs for your Datum Cloud projects |
 
 ## Using this catalog
 
@@ -34,6 +34,15 @@ datumctl compute --help
 ```
 
 Plugins for the Milo platform live in the [Milo catalog](https://github.com/milo-os/cli-plugins), which you add with `datumctl plugin index add milo-os milo-os/cli-plugins`.
+
+The assistant, billing, ipam, search, and telemetry plugins have moved there, and their entries here are deprecated. They keep installing from this catalog until they are removed. datumctl v0.25.0 and later warns when you install, upgrade, or list them and shows the commands to switch:
+
+```sh
+datumctl plugin index add milo-os milo-os/cli-plugins
+datumctl plugin install milo-os/ipam
+```
+
+After you switch, `datumctl plugin upgrade` updates the plugin from the Milo catalog.
 
 ## Submitting a plugin
 
