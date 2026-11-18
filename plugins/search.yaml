@@ -5,6 +5,10 @@ metadata:
 spec:
   shortDescription: Search for resources across the platform by kind, name, and project scope
   homepage: https://github.com/milo-os/search
+  deprecated:
+    message: search moved to the Milo plugin catalog.
+    replacement:
+      catalog: milo-os/cli-plugins
   version: v0.8.12
   platforms:
     - selector:

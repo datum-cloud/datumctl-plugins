@@ -5,6 +5,10 @@ metadata:
 spec:
   shortDescription: View metered usage and spend for your organization or project
   homepage: https://github.com/milo-os/billing
+  deprecated:
+    message: billing moved to the Milo plugin catalog.
+    replacement:
+      catalog: milo-os/cli-plugins
   version: v0.9.0
   platforms:
     - selector:
