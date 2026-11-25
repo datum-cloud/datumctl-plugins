@@ -19,7 +19,7 @@ permissions:
 
 jobs:
   scan:
-    uses: datum-cloud/actions/.github/workflows/plugin-catalog-scan.yaml@v1.30.0
+    uses: datum-cloud/actions/.github/workflows/plugin-catalog-scan.yaml@v1.31.0
     with:
       dry-run: ${{ inputs.dry-run || false }}
       plugin: ${{ inputs.plugin || '' }}
