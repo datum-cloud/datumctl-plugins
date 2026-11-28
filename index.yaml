@@ -240,54 +240,54 @@ items:
       message: ipam moved to the Milo plugin catalog.
       replacement:
         catalog: milo-os/cli-plugins
-    version: v0.5.6
+    version: v0.7.1
     platforms:
     - selector:
         matchLabels:
           os: linux
           arch: amd64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.6/milo-ipam_Linux_x86_64.tar.gz
-      sha256: ddb2e3d054952e4ed061644a2b128b3879bffddb813c628fbdf5640647bb628f
+      uri: https://github.com/milo-os/ipam/releases/download/v0.7.1/milo-ipam_Linux_x86_64.tar.gz
+      sha256: c443ee437cd8c98ae11534b01bc3769004decfc83fbac7252bffd02f5e69b0f3
       files:
       - from: milo-ipam
     - selector:
         matchLabels:
           os: linux
           arch: arm64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.6/milo-ipam_Linux_arm64.tar.gz
-      sha256: 7826215647d498f45d650543d94110156a7961f73d34cbf2196e561528a82615
+      uri: https://github.com/milo-os/ipam/releases/download/v0.7.1/milo-ipam_Linux_arm64.tar.gz
+      sha256: 15f01bb3d8ccf3d828927f3873c9053f2c90961669d58992e6a98c61cb8be0f9
       files:
       - from: milo-ipam
     - selector:
         matchLabels:
           os: darwin
           arch: amd64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.6/milo-ipam_Darwin_x86_64.tar.gz
-      sha256: 4b63ca18620d8d51606cc24b5464a5a42184319bfc0172d61fab94e7bf4dc906
+      uri: https://github.com/milo-os/ipam/releases/download/v0.7.1/milo-ipam_Darwin_x86_64.tar.gz
+      sha256: 55e7db729ebef5432ddf89a5a8ed15f80af82f08691ca064f14ae5f1aff05500
       files:
       - from: milo-ipam
     - selector:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.6/milo-ipam_Darwin_arm64.tar.gz
-      sha256: 12aa81aec53ac45341e97ae7f946f802467037f3b9196d8708f1de9bdcc8be65
+      uri: https://github.com/milo-os/ipam/releases/download/v0.7.1/milo-ipam_Darwin_arm64.tar.gz
+      sha256: 333544ddb1f189b4cfec896d5034cf44402bd2c6906c121b97c24661ec3d6601
       files:
       - from: milo-ipam
     - selector:
         matchLabels:
           os: windows
           arch: amd64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.6/milo-ipam_Windows_x86_64.zip
-      sha256: 864f19aae407ca9c23c74329e680c584f2d2523e532a2b4c2c3684701bb5eedf
+      uri: https://github.com/milo-os/ipam/releases/download/v0.7.1/milo-ipam_Windows_x86_64.zip
+      sha256: 6da2b435af0a7eaa0ad8c2b26c72ae76a4179c995bbe20fa88ffff398c7b13d0
       files:
       - from: milo-ipam.exe
     - selector:
         matchLabels:
           os: windows
           arch: arm64
-      uri: https://github.com/milo-os/ipam/releases/download/v0.5.6/milo-ipam_Windows_arm64.zip
-      sha256: 7ea5808537375cb46d62174f5799902cad39383bc9324386ef004afc6021d9ec
+      uri: https://github.com/milo-os/ipam/releases/download/v0.7.1/milo-ipam_Windows_arm64.zip
+      sha256: 9dec41d29c11c1e1ebfb05bea069e7dd9c5807c15bd7d52d865d220a4704915a
       files:
       - from: milo-ipam.exe
 - apiVersion: datumctl.datum.net/v1alpha1
