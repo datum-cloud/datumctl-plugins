@@ -52,44 +52,44 @@ items:
       message: assistant moved to the Milo plugin catalog.
       replacement:
         catalog: milo-os/cli-plugins
-    version: v0.0.15
+    version: v0.0.16
     platforms:
     - selector:
         matchLabels:
           os: linux
           arch: amd64
-      uri: https://github.com/milo-os/assistant/releases/download/v0.0.15/milo-assistant_Linux_x86_64.tar.gz
-      sha256: b5d59bb9be956ba8ea9c63cd62adcff6663ce5b94dba2566738c90841ba96873
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.16/milo-assistant_Linux_x86_64.tar.gz
+      sha256: af294e2eb32885ee0345085349c4a292bece231756c3e13d6c1d17422fdec2ef
     - selector:
         matchLabels:
           os: linux
           arch: arm64
-      uri: https://github.com/milo-os/assistant/releases/download/v0.0.15/milo-assistant_Linux_arm64.tar.gz
-      sha256: bc398f7b17168a50440afe5e06ea767fb9c37b29c0a400b4bba875a4ec711c98
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.16/milo-assistant_Linux_arm64.tar.gz
+      sha256: f726cb79eb68f990c3571351ab2a9a6f3f01a3c4373f16141a67d60d0ff97d42
     - selector:
         matchLabels:
           os: darwin
           arch: amd64
-      uri: https://github.com/milo-os/assistant/releases/download/v0.0.15/milo-assistant_Darwin_x86_64.tar.gz
-      sha256: db8d828a11ceb678eb613d1ae93d8612d4b0c1913f56a88e9e48b31f065f3394
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.16/milo-assistant_Darwin_x86_64.tar.gz
+      sha256: c6d60a5b90b02c50a02db4d7b517047268e9eeea5e855c6bbf698f893372c554
     - selector:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/milo-os/assistant/releases/download/v0.0.15/milo-assistant_Darwin_arm64.tar.gz
-      sha256: ce75f29f0d0a7f60fd7954f4e445dc7fd10d04213f0428ce4c83f19ae0bffac1
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.16/milo-assistant_Darwin_arm64.tar.gz
+      sha256: 3d005aa1ec6c684dc57e47561a047aa12cfa11b5cbc078484a77674adb219a6c
     - selector:
         matchLabels:
           os: windows
           arch: amd64
-      uri: https://github.com/milo-os/assistant/releases/download/v0.0.15/milo-assistant_Windows_x86_64.zip
-      sha256: 0e4da18e8980f11e6775b7e96e4c0e9ce36c6780e59e7ee004c16b7dc11db132
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.16/milo-assistant_Windows_x86_64.zip
+      sha256: 05e45c36e0a87a5f70e6a059b81c866c9212cc5472b9edb10a9ca2e0d078c9f9
     - selector:
         matchLabels:
           os: windows
           arch: arm64
-      uri: https://github.com/milo-os/assistant/releases/download/v0.0.15/milo-assistant_Windows_arm64.zip
-      sha256: 1f74a349d5577a8d4ac9385b155850f58c4dd918d9ac6caf8b13c6d2860746d0
+      uri: https://github.com/milo-os/assistant/releases/download/v0.0.16/milo-assistant_Windows_arm64.zip
+      sha256: f12256bb72069ccea9cf4e488d17ee74a4049cd03e4f1fab95b6100f2a2c1d07
 - apiVersion: datumctl.datum.net/v1alpha1
   kind: Plugin
   metadata:
